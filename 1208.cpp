@@ -65,17 +65,20 @@ void showWalk(struct Node* tmp) {
 
 void freeNode(struct Node* p) {
 	struct Node *tmp;
+	tmp = p;
+	tmp->pNext = 0;
+	tmp->pNext2 = 0;
 	while (p->pNext !=0 || p->pNext2 != 0) {
-		if (p->pNext != 0) {
-			tmp = p->pNext;
+		if (tmp->pNext != 0) {
+			tmp = tmp->pNext;
 			if (!tmp->pNext && !tmp->pNext2) {
 				tmp->pup = 0;
 				delete tmp;
 				tmp = p;
 			}
 		}
-		else if (p->pNext2 != 0) {
-			tmp = p->pNext2;
+		else if (tmp->pNext2 != 0) {
+			tmp = tmp->pNext2;
 			if (!tmp->pNext && !tmp->pNext2) {
 				tmp->pup = 0;
 				delete tmp;
@@ -95,15 +98,15 @@ void run()
 	root->pNext = 0;
 	root->pNext2 = 0;
 	int A[H][W] = { {1,1,1,1,1,1,1,1,1,1} ,
-			{1,0,0,0,0,1,1,1,0,1} ,
-			{1,0,0,1,1,1,0,1,0,1} ,
-			{1,0,1,0,0,0,0,1,0,1} ,
-			{1,0,1,0,0,0,1,0,0,1} ,
-			{1,0,1,0,0,0,1,0,0,1} ,
-			{1,0,1,1,1,1,1,0,0,1} ,
-			{1,0,0,0,0,0,0,0,0,1} ,
-			{1,0,0,0,0,0,0,0,0,1} ,
-			{1,1,1,1,1,1,1,1,1,1} };
+					{1,0,0,0,0,1,1,1,0,1} ,
+					{1,0,0,1,1,1,0,1,0,1} ,
+					{1,0,1,0,0,0,0,1,0,1} ,
+					{1,0,1,0,0,0,1,0,0,1} ,
+					{1,0,1,0,0,0,1,0,0,1} ,
+					{1,0,1,1,1,1,1,0,0,1} ,
+					{1,0,0,0,0,0,0,0,0,1} ,
+					{1,0,0,0,0,0,0,0,0,1} ,
+					{1,1,1,1,1,1,1,1,1,1} };
 	show(A);
 	fill(A, root, 3, 3, 2);
 	show(A);
